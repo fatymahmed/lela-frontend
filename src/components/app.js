@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import axios from 'axios';
 import Dashboard from './Dashboard';
 import Home from './Home';
+import Items from './Items';
+import Lists from './Lists';
 
 export default class App extends React.Component {
   constructor() {
@@ -68,8 +70,10 @@ export default class App extends React.Component {
              <Home { ...props} handleLogin={this.handleLogin} handleLogout={this.handleLogout} loggedInStatus={this.state.loggedInStatus}/>
            )} 
          />
-         <Route exact path={"/dashboard"}
-         render={props => (<Dashboard { ...props} loggedInStatus={this.state.loggedInStatus}/>)} />
+         <Route exact path={"/lists"}
+         render={props => (<Lists { ...props} loggedInStatus={this.state.loggedInStatus}/>)} />
+         <Route exact path={"/items"}
+         render={props => (<Items { ...props} loggedInStatus={this.state.loggedInStatus}/>)} />
            </Switch>
      </BrowserRouter>
    </div>

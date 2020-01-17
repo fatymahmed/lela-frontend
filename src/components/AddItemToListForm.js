@@ -1,11 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 
-export default class AddListForm extends React.Component{
+export default class AddItemToListForm extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-    listDesc: '',
     name: '',
     price: 0,
     category: '',
@@ -16,17 +15,15 @@ export default class AddListForm extends React.Component{
   }
 
   handleSubmit() {
-    const { listDesc, name, price, description, category } = this.state;
-    axios.post("http://localhost:3001/lists", {
-      list: { 
-        description: listDesc,
-        items_attributes: [{
+    const { name, price, description, category } = this.state;
+    const { List_id } = this.props.location;
+    axios.post(`http://localhost:3001/lists/{List_id}/items`, {
+        item: {
           name,
           price,
           description,
           category
-        }]
-      }
+        }
     },
     {
       withCredentials: true  })
