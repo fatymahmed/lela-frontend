@@ -3,7 +3,7 @@ import React from 'react';
 const List = props => {
   function addItemRedirect() {
     props.history.push({
-      pathname: '/addItemToListForm',
+      pathname: '/addItemsToList',
       state: { List_id: props.list.id }
     })
   }

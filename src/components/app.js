@@ -5,6 +5,7 @@ import Dashboard from './Dashboard';
 import Home from './Home';
 import Items from './Items';
 import Lists from './Lists';
+import AddItemToListForm from './AddItemToListForm';
 
 export default class App extends React.Component {
   constructor() {
@@ -74,6 +75,8 @@ export default class App extends React.Component {
          render={props => (<Lists { ...props} loggedInStatus={this.state.loggedInStatus}/>)} />
          <Route exact path={"/items"}
          render={props => (<Items { ...props} loggedInStatus={this.state.loggedInStatus}/>)} />
+         <Route exact path={"/addItemToListForm"}
+         render={props => (<AddItemToListForm { ...props} loggedInStatus={this.state.loggedInStatus}/>)} />
            </Switch>
      </BrowserRouter>
    </div>

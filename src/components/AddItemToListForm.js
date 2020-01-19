@@ -16,13 +16,13 @@ export default class AddItemToListForm extends React.Component{
 
   handleSubmit() {
     const { name, price, description, category } = this.state;
-    const { List_id } = this.props.location;
-    axios.post(`http://localhost:3001/lists/{List_id}/items`, {
+    const { List_id } = this.props.location.state;
+    axios.post(`http://localhost:3001/items`, {
         item: {
           name,
           price,
           description,
-          category
+          category,
         }
     },
     {
@@ -33,7 +33,8 @@ export default class AddItemToListForm extends React.Component{
       .catch( error => {
           console.log("login error", error)
         })
-    event.preventDefault();    this.resetStates();
+    event.preventDefault();    
+    this.resetStates();
   }
 
   resetStates() {
@@ -61,10 +62,6 @@ render() {
       <h2>Add List</h2>
       <form>
       <div className="form-group">
-          <label for="List-Description">List Description</label>
-          <input type="text" className="form-control" id="listDesc" placeholder="List Description" onChange={this.handleChange}/>
-        </div>
-      <div className="form-group">
           <label for="name">Name</label>
           <input type="text" className="form-control" id="name" placeholder="Name" onChange={this.handleChange}/>
         </div>
@@ -81,7 +78,7 @@ render() {
           <input type="text" className="form-control" id="description" placeholder="Description" onChange={this.handleChange}/>
         </div>
       </form>
-      <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Create List</button>
+      <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Add Item</button>
   </div>
   )
 }

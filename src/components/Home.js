@@ -4,7 +4,7 @@ import Registration from './auth/Registration';
 import Login from './auth/Login';
 import ItemForm from './ItemForm';
 import AddListForm from './AddListForm';
-import List from './Lists';
+import Lists from './Lists';
 
 export default class Home extends React.Component {
   constructor(props){
@@ -32,7 +32,7 @@ export default class Home extends React.Component {
     return(
       <div>
         {/* <ItemForm/> */}
-        <List/>
+        {/* <List/> */}
         <AddListForm/>
         <h1>Home</h1>
         <h1> Status {this.props.loggedInStatus}</h1>

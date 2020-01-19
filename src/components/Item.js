@@ -1,18 +1,25 @@
 import React from 'react';
+import axios from 'axios';
 
 const Item = props => {
-//   function addItemRedirect() {
-//     props.history.push({
-//       pathname: '/addItemToListForm',
-//       state: { List_id: props.list.id }
-//     })
-//   }
+  function deleteItem() {
+    const { id } = props.item;
+    axios.delete(`http://localhost:3001/items/${id}`, 
+    { withCredentials: true })
+    .then(response => { 
+      window.location.reload();        
+    })
+        .catch(error => {
+        console.log("logout error", error);
+        })
+    }
+
   return(
     <div>
       <div>
         <h1>{props.item.name}</h1>
       </div>
-      {/* <button type="submit" onClick={addItemRedirect}>Add Item To List</button> */}
+      <button type="submit" onClick={deleteItem}>Delete item</button>
     </div>
   )
 }

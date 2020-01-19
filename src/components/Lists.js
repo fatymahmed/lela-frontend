@@ -32,7 +32,7 @@ render() {
     <div>
       <h2>Lists</h2>
       {lists.map( list => (
-        <List list={list}/>
+        <List list={list} history={this.props.history}/>
       ))}    
   </div>
   )

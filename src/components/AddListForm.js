@@ -19,13 +19,14 @@ export default class AddListForm extends React.Component{
     const { listDesc, name, price, description, category } = this.state;
     axios.post("http://localhost:3001/lists", {
       list: { 
-        description: listDesc,
-        items_attributes: [{
-          name,
-          price,
-          description,
-          category
-        }]
+        description: listDesc
+        // ,
+        // items_attributes: [{
+        //   name,
+        //   price,
+        //   description,
+        //   category
+        // }]
       }
     },
     {
@@ -67,21 +68,21 @@ render() {
           <label for="List-Description">List Description</label>
           <input type="text" className="form-control" id="listDesc" placeholder="List Description" onChange={this.handleChange}/>
         </div>
-      <div className="form-group">
-          <label for="name">Name</label>
-          <input type="text" className="form-control" id="name" placeholder="Name" onChange={this.handleChange}/>
-        </div>
-        <div className="form-group">
-          <label for="price">Price</label>
-          <input type="number" className="form-control" id="price" placeholder="Price" onChange={this.handleChange}/>
-        </div>
-        <div className="form-group">
-          <label for="Category">Category</label>
-          <input type="text" className="form-control" id="category" placeholder="Category" onChange={this.handleChange}/>
-        </div>
-        <div className="form-group">
-          <label for="Description">Description</label>
-          <input type="text" className="form-control" id="description" placeholder="Description" onChange={this.handleChange}/>
+      {/* <div className="form-group"> */}
+          {/* <label for="name">Name</label> */}
+          {/* <input type="text" className="form-control" id="name" placeholder="Name" onChange={this.handleChange}/> */}
+        {/* </div> */}
+        {/* <div className="form-group"> */}
+          {/* <label for="price">Price</label> */}
+          {/* <input type="number" className="form-control" id="price" placeholder="Price" onChange={this.handleChange}/> */}
+        {/* </div> */}
+        {/* <div className="form-group"> */}
+          {/* <label for="Category">Category</label> */}
+          {/* <input type="text" className="form-control" id="category" placeholder="Category" onChange={this.handleChange}/> */}
+        {/* </div> */}
+        {/* <div className="form-group"> */}
+          {/* <label for="Description">Description</label> */}
+          {/* <input type="text" className="form-control" id="description" placeholder="Description" onChange={this.handleChange}/> */}
         </div>
       </form>
       <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Create List</button>

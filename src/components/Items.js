@@ -33,7 +33,7 @@ render() {
     <div>
       <h2>Items</h2>
       {items.map( item => (
-        <Item item={item}/>
+        <Item item={item} history={this.props.history}/>
       ))}    
   </div>
   )
