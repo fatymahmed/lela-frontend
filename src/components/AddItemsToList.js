@@ -13,13 +13,17 @@ export default class AddItemsToList extends React.Component{
   }
 
   componentDidMount(){
-    axios.get("http://localhost:3001/items_to_add",
+    const { List_id } = this.props.location.state;
+    console.log("id list", List_id);
+    axios.post("http://localhost:3001/items_to_add",
     {
+      id: List_id
+    },{
       withCredentials: true  })
       .then(response => {
         console.log(response);
         this.setState({
-            items: response.data
+            items: response.data.items
         })
       })
       .catch( error => {
@@ -28,9 +32,10 @@ export default class AddItemsToList extends React.Component{
     event.preventDefault(); 
   }
   addItemToList(id){
-    const { list_id } = this.props.location.state;
+    const { List_id } = this.props.location.state;
+    console.log("list id is", List_id);
     axios.post(`http://localhost:3001/collections`, {
-        list_id,
+        list_id: List_id,
         item_id: id
     },
     {

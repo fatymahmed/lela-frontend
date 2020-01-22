@@ -5,6 +5,7 @@ import Login from './auth/Login';
 import ItemForm from './ItemForm';
 import AddListForm from './AddListForm';
 import Lists from './Lists';
+import AddItemToListForm from './AddItemToListForm';
 
 export default class Home extends React.Component {
   constructor(props){
@@ -31,9 +32,10 @@ export default class Home extends React.Component {
   render() {
     return(
       <div>
-        {/* <ItemForm/> */}
-        {/* <List/> */}
-        <AddListForm/>
+        <ItemForm/>
+        <Lists/>
+        {/* <AddListForm/> */}
+        { <AddItemToListForm/> }
         <h1>Home</h1>
         <h1> Status {this.props.loggedInStatus}</h1>
         <button onClick={ () =>this.handleLogoutClick()}>Logout</button>

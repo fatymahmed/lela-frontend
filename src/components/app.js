@@ -6,6 +6,8 @@ import Home from './Home';
 import Items from './Items';
 import Lists from './Lists';
 import AddItemToListForm from './AddItemToListForm';
+import AddItemsToList from './AddItemsToList';
+import ShowList from './ShowList';
 
 export default class App extends React.Component {
   constructor() {
@@ -77,7 +79,11 @@ export default class App extends React.Component {
          render={props => (<Items { ...props} loggedInStatus={this.state.loggedInStatus}/>)} />
          <Route exact path={"/addItemToListForm"}
          render={props => (<AddItemToListForm { ...props} loggedInStatus={this.state.loggedInStatus}/>)} />
-           </Switch>
+        <Route exact path={"/addItemsToList"}
+         render={props => (<AddItemsToList { ...props} loggedInStatus={this.state.loggedInStatus}/>)} />
+         <Route exact path={"/list"}
+         render={props => (<ShowList { ...props} loggedInStatus={this.state.loggedInStatus}/>)} />
+         </Switch>
      </BrowserRouter>
    </div>
     )
