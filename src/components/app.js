@@ -8,6 +8,8 @@ import Lists from './Lists';
 import AddItemToListForm from './AddItemToListForm';
 import AddItemsToList from './AddItemsToList';
 import ShowList from './ShowList';
+import Login from './auth/Login';
+import Registration from './auth/Registration';
 
 export default class App extends React.Component {
   constructor() {
@@ -73,6 +75,10 @@ export default class App extends React.Component {
              <Home { ...props} handleLogin={this.handleLogin} handleLogout={this.handleLogout} loggedInStatus={this.state.loggedInStatus}/>
            )} 
          />
+         <Route exact path={"/login"}
+         render={props => (<Login { ...props} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus}/>)} />
+         <Route exact path={"/signup"}
+         render={props => (<Registration { ...props} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus}/>)} />
          <Route exact path={"/lists"}
          render={props => (<Lists { ...props} loggedInStatus={this.state.loggedInStatus}/>)} />
          <Route exact path={"/items"}

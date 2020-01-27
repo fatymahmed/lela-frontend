@@ -15,7 +15,7 @@ export default class Login extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleSubmit(event) {
+  handleSubmit(e) {
     const { email, password } = this.state;
 
     axios.post("http://localhost:3001/sessions", {
@@ -27,14 +27,17 @@ export default class Login extends React.Component {
     {
       withCredentials: true  })
       .then(response => {
+        console.log("e is", e);
         if (response.data.logged_in){
-          this.props.handleSuccessfulAuth(response.data);
+          console.log("data login", response.data);
+          this.props.history.push('/');
+          // this.props.handleSuccessfulAuth(response.data);
         }
       })
       .catch( error => {
           console.log("login error", error)
         })
-    event.preventDefault();
+    e.preventDefault();
 
   }
 
@@ -46,10 +49,10 @@ export default class Login extends React.Component {
     render() {
     return(
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form>
           <input type= "email" name="email" placeholder="Email" value={this.state.email} onChange={this.handleChange} required/>
           <input type= "password" name="password" placeholder="Password" value={this.state.password} onChange={this.handleChange} required/>
-          <button type= "submit">Login</button>
+          <button onClick={this.handleSubmit} type= "submit">Login</button>
         </form>
       </div>
     )

@@ -29,7 +29,9 @@ export default class Registration extends React.Component {
       withCredentials: true  })
       .then(response => {
         if (response.data.status === "created"){
-          this.props.handleSuccessfulAuth(response.data);
+          console.log("push", this.props);response.data
+          this.props.history.push('/');
+          // this.props.handleSuccessfulAuth(response.data);
         }
       })
       .catch( error => {
