@@ -10,6 +10,8 @@ import AddItemsToList from './AddItemsToList';
 import ShowList from './ShowList';
 import Login from './auth/Login';
 import Registration from './auth/Registration';
+import ItemForm from './ItemForm';
+import AddListForm from './AddListForm';
 
 export default class App extends React.Component {
   constructor() {
@@ -81,6 +83,10 @@ export default class App extends React.Component {
          render={props => (<Registration { ...props} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus}/>)} />
          <Route exact path={"/lists"}
          render={props => (<Lists { ...props} loggedInStatus={this.state.loggedInStatus}/>)} />
+          <Route exact path={"/addItem"}
+         render={props => (<ItemForm { ...props} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus}/>)} />
+         <Route exact path={"/addList"}
+         render={props => (<AddListForm { ...props} loggedInStatus={this.state.loggedInStatus}/>)} />
          <Route exact path={"/items"}
          render={props => (<Items { ...props} loggedInStatus={this.state.loggedInStatus}/>)} />
          <Route exact path={"/addItemToListForm"}

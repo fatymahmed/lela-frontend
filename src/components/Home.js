@@ -9,6 +9,7 @@ import AddItemToListForm from './AddItemToListForm';
 import GuestNavbar from './GuestNavbar';
 import Items from './Items';
 import UserNavbar from './UserNavbar';
+import AdminNavbar from './AdminNavbar';
 
 export default class Home extends React.Component {
   constructor(props){
@@ -65,14 +66,31 @@ export default class Home extends React.Component {
       })
    }
   render() {
-    const { loggedInStatus } = this.state;
-    if(loggedInStatus==="LOGGED_IN")
+    const { loggedInStatus, user } = this.state;
+    if(loggedInStatus==="LOGGED_IN" && user.admin===false)
     {
       return(
         <div>
           {/* <ItemForm/> */}
           <h1>Home</h1>
           <UserNavbar history={this.props.history} handleLogoutClick={this.handleLogoutClick}/>
+          <Items/>
+          <Lists/>
+          {/* <AddListForm/> */}
+          {/* { <AddItemToListForm/> } */}
+          <h1> Status {this.props.loggedInStatus}</h1>
+          <button onClick={ () =>this.handleLogoutClick()}>Logout</button>
+          {/* <Registration handleSuccessfulAuth={this.handleSuccessfulAuth}/>
+          <Login handleSuccessfulAuth={this.handleSuccessfulAuth}/> */}
+        </div>
+      )
+    }
+    else if(loggedInStatus==="LOGGED_IN" && user.admin===true){
+      return(
+        <div>
+          {/* <ItemForm/> */}
+          <h1>Home</h1>
+          <AdminNavbar history={this.props.history} handleLogoutClick={this.handleLogoutClick}/>
           <Items/>
           <Lists/>
           {/* <AddListForm/> */}

@@ -27,7 +27,7 @@ export default class Login extends React.Component {
     {
       withCredentials: true  })
       .then(response => {
-        console.log("e is", e);
+        console.log("resp", response.data);
         if (response.data.logged_in){
           console.log("data login", response.data);
           this.props.history.push('/');

@@ -35,7 +35,8 @@ export default class ItemForm extends React.Component{
       .catch( error => {
           console.log("login error", error)
         })
-    event.preventDefault();    this.resetStates();
+    event.preventDefault();
+    this.resetStates();
   }
 
   resetStates() {
